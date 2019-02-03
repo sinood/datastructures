@@ -1,3 +1,6 @@
+/**
+ * Implementation of Singly Linked List with 'sentinel' node, which tracks the beginning of the SLList.
+ * */
 public class SLList {
     /** Nested class to define every node of the SLList */
     public class IntNode {

@@ -1,3 +1,6 @@
+/**
+ * 'Naked' IntList liked list datastructure. Minimal functionality.
+ * */
 public class IntList {
     int first;
     IntList rest;
