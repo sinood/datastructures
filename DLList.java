@@ -21,16 +21,19 @@ public class DLList<Item> {
     public int size;
 
     public DLList(Item x) {
+        /** Initialize sentinel nodes */
         sentFront = new Node(null, null, null);
         sentBack = new Node(null, null, null);
+        /** Insert first node in between sentinels */
         sentFront.next = new Node(x, sentFront, sentBack);
         sentBack.prev = sentFront.next;
+        /** Make sentinels point to eachother (circular sentinel nodes) */
         sentFront.prev = sentBack;
         sentBack.next = sentFront;
         size = 1;
     }
 
-    /** Creates an empty DLList*/
+    /** Creates an empty DLList */
     public DLList() {
         sentFront = new Node(null, null, null);
         sentBack = new Node(null, null, null);
