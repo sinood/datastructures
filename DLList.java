@@ -1,29 +1,29 @@
 /**
- * Implementation of a Doubly Linked List with circular 'sentinel' nodes (nodes at the beginning and end
+ * Implementation of a Doubly Linked List of a generic type with circular 'sentinel' nodes (nodes at the beginning and end
  * of the DLList which keep track of the front and the back of the list, and which point to each other).
  */
-public class DLList {
+public class DLList<Item> {
     /** Nested class to define every node of the DLList */
-    public class IntNode {
-        public int item;
-        public IntNode prev;
-        public IntNode next;
+    public class Node {
+        public Item item;
+        public Node prev;
+        public Node next;
 
-        public IntNode (int i, IntNode p, IntNode n) {
+        public Node (Item i, Node p, Node n) {
             item = i;
             prev = p;
             next = n;
         }
     }
 
-    public IntNode sentFront;
-    public IntNode sentBack;
+    public Node sentFront;
+    public Node sentBack;
     public int size;
 
-    public DLList(int x) {
-        sentFront = new IntNode(10, null, null);
-        sentBack = new IntNode(11, null, null);
-        sentFront.next = new IntNode(x, sentFront, sentBack);
+    public DLList(Item x) {
+        sentFront = new Node(null, null, null);
+        sentBack = new Node(null, null, null);
+        sentFront.next = new Node(x, sentFront, sentBack);
         sentBack.prev = sentFront.next;
         sentFront.prev = sentBack;
         sentBack.next = sentFront;
@@ -32,8 +32,8 @@ public class DLList {
 
     /** Creates an empty DLList*/
     public DLList() {
-        sentFront = new IntNode(10, null, null);
-        sentBack = new IntNode(11, null, null);
+        sentFront = new Node(null, null, null);
+        sentBack = new Node(null, null, null);
         sentFront.prev = sentBack;
         sentFront.next = sentBack;
         sentBack.next = sentFront;
@@ -42,8 +42,8 @@ public class DLList {
     }
 
     /** Add x to the end of the DLList */
-    public void addLast(int x) {
-        IntNode n = new IntNode(x, null, null);
+    public void addLast(Item x) {
+        Node n = new Node(x, null, null);
         sentBack.prev.next = n;
         n.prev = sentBack.prev;
         sentBack.prev = n;
@@ -53,13 +53,13 @@ public class DLList {
     }
 
     /** Returns the last element of the DLList */
-    public int getLast() {
+    public Item getLast() {
         return sentBack.prev.item;
     }
 
     /** Add x to the front of the DLList */
-    public void addFirst(int x) {
-        IntNode n = new IntNode(x, null, null);
+    public void addFirst(Item x) {
+        Node n = new Node(x, null, null);
         sentFront.next.prev = n;
         n.next = sentFront.next;
         sentFront.next = n;
@@ -68,16 +68,16 @@ public class DLList {
     }
 
     /** Returns the first element of the DLList */
-    public int getFirst() {
+    public Item getFirst() {
         return sentFront.next.item;
     }
 
     /** Returns a string representation of the DLList */
-    public String getString(IntNode n) {
+    public String getString(Node n) {
         if (n.equals(sentBack)) {
-            return "end";
+            return "";
         }
-        return "<"+n.item+", "+getString(n.next)+">";
+        return "<"+n.item+" "+getString(n.next)+">";
     }
 
     /** Prints the string representation of the DLList returned by getString */
@@ -87,12 +87,12 @@ public class DLList {
 
     public static void main(String[] args) {
         /** Testing the methods of the DLList class */
-        DLList d = new DLList();
-        d.addLast(3);
-        d.addFirst(2);
-        d.addLast(4);
-        d.addFirst(1);
-        d.addLast(5);
+        DLList<String> d = new DLList<>();
+        d.addLast("you");
+        d.addFirst("are");
+        d.addLast("doing");
+        d.addFirst("how");
+        d.addLast("today");
         System.out.println(d.getFirst()); // Should not be sentFront.item
         System.out.println(d.getLast()); // Should not be sentBack.item
         d.print();
