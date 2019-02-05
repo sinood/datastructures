@@ -33,7 +33,7 @@ public class AList<Item> {
     }
 
     /** Returns the last item of the AList */
-    public int getLast() {
+    public Item getLast() {
         return items[size-1];
     }
 
@@ -43,9 +43,11 @@ public class AList<Item> {
     }
 
     /** Removes the last item of the AList and returns it */
-    public int removeLast(){
+    public Item removeLast(){
+        Item last = getLast();
         size--;
-        return getLast();
+        items[size] = null; // Get rid of loitering objects!
+        return last;
     }
 
     /** Resizes the AList by resizing the underlying array to size capacity */
