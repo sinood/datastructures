@@ -3,13 +3,15 @@
  * of the DLList which keep track of the front and the back of the list, and which point to each other).
  */
 public class DLList<Item> {
-    /** Nested class to define every node of the DLList */
+    /**
+     * Nested class to define every node of the DLList
+     */
     public class Node {
         public Item item;
         public Node prev;
         public Node next;
 
-        public Node (Item i, Node p, Node n) {
+        public Node(Item i, Node p, Node n) {
             item = i;
             prev = p;
             next = n;
@@ -33,7 +35,9 @@ public class DLList<Item> {
         size = 1;
     }
 
-    /** Creates an empty DLList */
+    /**
+     * Creates an empty DLList
+     */
     public DLList() {
         sentFront = new Node(null, null, null);
         sentBack = new Node(null, null, null);
@@ -44,23 +48,29 @@ public class DLList<Item> {
         size = 0;
     }
 
-    /** Add x to the end of the DLList */
+    /**
+     * Add x to the end of the DLList
+     */
     public void addLast(Item x) {
         Node n = new Node(x, null, null);
         sentBack.prev.next = n;
         n.prev = sentBack.prev;
         sentBack.prev = n;
         n.next = sentBack;
-        size ++;
+        size++;
 
     }
 
-    /** Returns the last element of the DLList */
+    /**
+     * Returns the last element of the DLList
+     */
     public Item getLast() {
         return sentBack.prev.item;
     }
 
-    /** Add x to the front of the DLList */
+    /**
+     * Add x to the front of the DLList
+     */
     public void addFirst(Item x) {
         Node n = new Node(x, null, null);
         sentFront.next.prev = n;
@@ -70,20 +80,26 @@ public class DLList<Item> {
         size++;
     }
 
-    /** Returns the first element of the DLList */
+    /**
+     * Returns the first element of the DLList
+     */
     public Item getFirst() {
         return sentFront.next.item;
     }
 
-    /** Returns a string representation of the DLList */
+    /**
+     * Returns a string representation of the DLList
+     */
     public String getString(Node n) {
         if (n.equals(sentBack)) {
             return "";
         }
-        return "<"+n.item+" "+getString(n.next)+">";
+        return "<" + n.item + " " + getString(n.next) + ">";
     }
 
-    /** Prints the string representation of the DLList returned by getString */
+    /**
+     * Prints the string representation of the DLList returned by getString
+     */
     public void print() {
         System.out.print(getString(sentFront.next));
     }

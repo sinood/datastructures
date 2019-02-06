@@ -1,6 +1,6 @@
 /**
  * 'Naked' IntList liked list datastructure. Minimal functionality.
- * */
+ */
 public class IntList {
     int first;
     IntList rest;
@@ -21,11 +21,11 @@ public class IntList {
         if (i == 0) {
             return first;
         }
-        return rest.getInt(i-1);
+        return rest.getInt(i - 1);
 
     }
 
-    public static void main (String[] args) {
+    public static void main(String[] args) {
         IntList l = new IntList(1, null);
         l = new IntList(2, l);
         System.out.println(l.getSize());
