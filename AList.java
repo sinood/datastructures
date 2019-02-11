@@ -1,7 +1,7 @@
+package datastructures;
 import datastructures.List61B;
-
 /**
- * Implementation of a resizable ArrayList that takes a generic type.
+ * Implementation of a resizable ArrayList with circular indexing that takes a generic type.
  */
 public class AList<Item> implements List61B<Item> {
     private Item[] items;
@@ -214,7 +214,7 @@ public class AList<Item> implements List61B<Item> {
     /**
      * Prints the string representation of the AList returned by getString.
      */
-    public void printDeque() {
+    public void printAList() {
         System.out.println(getString());
     }
 }

@@ -1,5 +1,8 @@
 package datastructures;
 
+/**
+ * Interface example, implemented by AList.
+ */
 public interface List61B<Item> {
     /**
      * Add x to the end of the list
@@ -36,4 +39,25 @@ public interface List61B<Item> {
      * Returns the size of the list
      */
     public int size();
+
+    default public void print() {
+        for (int i = 0; i < size(); i++) {
+            System.out.print(get(i) + " ");
+        }
+        System.out.println();
+    }
+}
+
+class Demo {
+    public static void main(String[] args) {
+        AList<String> s = new AList();
+
+        s.addLast("a");
+        s.addLast("b");
+        s.addLast("c");
+        s.addLast("d");
+        /* Not defined in AList, uses the implementation inheritance via the default method defined in List61B */
+        s.print();
+    }
+
 }

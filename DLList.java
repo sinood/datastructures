@@ -1,3 +1,5 @@
+package datastructures;
+
 /**
  * Implementation of a Doubly Linked List of a generic type with circular 'sentinel' nodes (nodes at the beginning and end
  * of the DLList which keep track of the front and the back of the list, and which point to each other).
@@ -88,20 +90,40 @@ public class DLList<Item> {
     }
 
     /**
+     * Removes and returns the last item of the DLList.
+     */
+    public Item removeLast() {
+        Item last = sentBack.prev.item;
+        sentBack.prev.prev.next = sentBack;
+        sentBack.prev = sentBack.prev.prev;
+        return last;
+    }
+
+    /**
+     * Removes and returns the last item of the DLList.
+     */
+    public Item removeFirst() {
+        Item first = sentFront.next.item;
+        sentFront.next.next.prev = sentFront;
+        sentFront.next = sentFront.next.next;
+        return first;
+    }
+
+    /**
      * Returns a string representation of the DLList
      */
     public String getString(Node n) {
         if (n.equals(sentBack)) {
             return "";
         }
-        return "<" + n.item + " " + getString(n.next) + ">";
+        return n.item + " " + getString(n.next);
     }
 
     /**
      * Prints the string representation of the DLList returned by getString
      */
     public void print() {
-        System.out.print(getString(sentFront.next));
+        System.out.println(getString(sentFront.next));
     }
 
     public static void main(String[] args) {
@@ -114,6 +136,9 @@ public class DLList<Item> {
         d.addLast("today");
         System.out.println(d.getFirst()); // Should not be sentFront.item
         System.out.println(d.getLast()); // Should not be sentBack.item
+        d.print();
+        System.out.println(d.removeFirst());
+        System.out.println(d.removeLast());
         d.print();
     }
 }

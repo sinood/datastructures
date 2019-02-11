@@ -1,3 +1,4 @@
+package datastructures;
 /**
  * Implementation of Singly Linked List of integers with 'sentinel' node, which tracks the beginning of the SLList.
  */
