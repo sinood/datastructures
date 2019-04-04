@@ -93,6 +93,23 @@ public class SLList {
         s.addFirst(1);
         s.addLast(5);
         s.print();
+        s.insert(6,2);
+        s.print();
+    }
+
+    public void insert(int x, int index) {
+        if (index < 0 || index > size()) {
+            throw new IllegalArgumentException();
+        }
+        insert(x, index, sentinel);
+        size += 1;
+    }
+    private void insert(int x, int index, IntNode n) {
+        if (index == 0) {
+            n.next = new IntNode(x, n.next);
+        } else {
+            insert(x, index-1, n.next);
+        }
     }
 }
 

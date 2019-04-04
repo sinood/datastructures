@@ -8,6 +8,7 @@ public class DeletedDLList<Item> extends DLList {
     DLList<Item> deletedItems;
 
     public DeletedDLList () {
+        super(); // Need to make explicit that the superclass's constructor is being called.
         deletedItems = new DLList<Item>();
     }
 
